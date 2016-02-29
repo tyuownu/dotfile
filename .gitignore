@@ -1,0 +1,7 @@
+*.swp
+*winmanager.txt
+*winfileexplorer.vim
+*winmanager.vim
+*wintagexplorer.vim
+backup/.emacs.d/*
+backup/.vim/*

@@ -1,0 +1,8 @@
+remove control = Control_L
+remove control = Caps_Lock
+remove lock = Caps_Lock
+remove lock = Control_L
+keycode 66 = Control_L NoSymbol Control_L
+keycode 37 = Caps_Lock NoSymbol Caps_Lock
+add control = Control_L
+add lock = Caps_Lock

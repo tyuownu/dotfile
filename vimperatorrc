@@ -1,0 +1,13 @@
+"3.9 (created: 2015/02/15 15:49:05)
+
+map J <C-d>
+map K <C-u>
+map w gt
+map q gT
+inoremap <C-k> <ESC>l
+cnoremap <C-k> <ESC>
+set "nextpattern=s*下一页|下一张|下一篇|下页|后一页|后页s*,^bnextb,\\bnext\\b,\\older\\b,^>$,^(>>|»)$,^(>|»),(>|»)$,\\bmore\\b"
+set "previouspattern=s*上一页|上一张|上一篇|上页|前一页|前页s*,^bprev|previousb,\\bprev|previous\\b,\\newer\\b^<$,^(<<|«)$,^(<|«),(<|«)$"
+source! /home/tyu/.vimperatorrc.local
+
+" vim: set ft=vimperator:

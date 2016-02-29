@@ -1,0 +1,48 @@
+#+TITLE: linux config.
+
+* USAGE:
+Copy relative file to relative directory. But some special.
+
+1. vim
+  +. git clone git@github.com:gmarik/vundle.git ~/.vim/bundle/vundle
+  +. replace(move) the vimrc to ~/.vimrc
+2. emacs(what I used is spacemacs)
+  +. git clone git@github.com:syl20bnr/spacemacs.git ~/.emacs.d
+  +. cd ~/.emacs.d/ && git checkout --track origin/develop
+  +. move the spacemacs/ to ~/.spacemacs.d(but notice there should not have a ~/.spacemacs)
+3. zsh
+  +. git clone git@github.com:robbyrussell/oh-my-zsh.git
+  +. cp zshrc ~/.zshrc
+
+* Context
+1. vim
+ +. vimrc
+    (~/.vimrc)
+2. emacs
+ +. /spacemacs/
+    (~/.spacemacs.d/)
+3. firefox
+ +. vimperatorrc
+    (~/.vimperatorrc)
+4. zsh
+ +. zshrc
+    (~/.zshrc)
+5. bash
+ +. bashrc
+    (~/.bashrc)
+ +. profile (swap the *CapsLock* <-> *Ctrl*)
+    (~/.profile)
+ +. locktoesc (used with the profile above)
+    (~/.locktoesc)
+6. termanitor
+ +. dircolors
+    (~/.dircolors)
+ +. /termanitor/
+    (~/.config/termanitor/)
+7. i3wm
+ +. /i3/
+    (~/.i3/)
+8. tmux
+ +. tmux.conf
+    (~/.tumx.conf)
+

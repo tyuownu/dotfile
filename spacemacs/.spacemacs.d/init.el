@@ -382,6 +382,15 @@ layers configuration. You are free to put any user code."
   (global-set-key (kbd "C-SPC") 'toggle-input-method)
   (setq c-default-style "linux"
         c-basic-offset 2)
+
+  ;; auto save the desktop when you close the EMACS, so next time it will open
+  ;; the file that you are working last time.
+  ;; but this can not work well, maybe will update in the future
+  ;; (desktop-save-mode 1)
+
+  (setq auto-mode-alist
+        (append '(("\\.launch\\'" . xml-mode))
+                auto-mode-alist))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

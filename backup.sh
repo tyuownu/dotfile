@@ -59,7 +59,7 @@ fi
 
 # i3wm
 if [ -x "$HOME/.i3" ]; then
-    cp -r $HOME/.i3/                    $PWD/i3/
+    cp -r $HOME/.i3/                    $PWD/i3
 fi
 
 # tmux

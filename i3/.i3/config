@@ -86,7 +86,7 @@ set $WS4 4:xchat
 
 
 # switch to workspace
-bindsym $mod+1 workspace $WS1, exec --no-startup-id ~/.i3/st terminator
+bindsym $mod+1 workspace $WS1
 bindsym $mod+2 workspace $WS2, exec --no-startup-id ~/.i3/st emacs
 bindsym $mod+3 workspace $WS3, exec --no-startup-id ~/.i3/st firefox
 bindsym $mod+4 workspace $WS4

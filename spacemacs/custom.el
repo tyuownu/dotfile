@@ -1,10 +1,10 @@
-(setq pyim-dicts
-      '((
-         :name "BigDict-01"
-               :file "/home/tyu/.spacemacs.d/pyim/pyim-bigdict.pyim"
-               :coding utf-8-unix
-               :dict-type pinyin-dict
-               )))
+;; (setq pyim-dicts
+;;       '((
+;;          :name "BigDict-01"
+;;                :file "/home/tyu/.spacemacs.d/pyim/pyim-bigdict.pyim"
+;;                :coding utf-8-unix
+;;                :dict-type pinyin-dict
+;;                )))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

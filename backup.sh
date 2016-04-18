@@ -25,6 +25,9 @@ fi
 
 # emacs
 if [ -x "$HOME/.spacemacs.d" ]; then
+    if [ -x "$PWD/spacemacs" ]; then
+      rm -rf $PWD/spacemacs
+    fi
     cp -r $HOME/.spacemacs.d           $PWD/spacemacs
 fi
 
@@ -59,6 +62,9 @@ fi
 
 # i3wm
 if [ -x "$HOME/.i3" ]; then
+    if [ -x "$PWD/i3" ]; then
+      rm -rf i3
+    fi
     cp -r $HOME/.i3/                    $PWD/i3
 fi
 

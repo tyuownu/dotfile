@@ -87,8 +87,10 @@ function gvim()
 {
     (/usr/bin/gvim -f "$@" &)
 }
-source /opt/ros/fuerte/setup.zsh
-export ROS_PACKAGE_PATH=/opt/ros/fuerte/stacks:/home/tyu/dvo_slam:/home/tyu/ros_workspace:/opt/ros/fuerte/share:/home/tyu/dev/rosbook
+if [ -x /opt/ros/fuerte/setup.zsh ]; then
+  source /opt/ros/fuerte/setup.zsh
+  export ROS_PACKAGE_PATH=/opt/ros/fuerte/stacks:/home/tyu/dvo_slam:/home/tyu/ros_workspace:/opt/ros/fuerte/share:/home/tyu/dev/rosbook
+fi
 
 
 bash ~/.profile

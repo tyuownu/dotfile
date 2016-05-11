@@ -373,7 +373,7 @@ imap vv <ESC>%%a
 "-----------------------------------------------------
 " ctags & Taglist                                    |
 "-----------------------------------------------------
-let g:Tlist_Ctags_Cmd='/home/tyu/ctags-5.5/ctags'
+" let g:Tlist_Ctags_Cmd='/home/tyu/ctags-5.5/ctags'
 set tags+=tags;
 map <C-F12> :!ctags -R -I --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 

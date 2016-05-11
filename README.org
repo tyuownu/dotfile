@@ -4,16 +4,22 @@
 Copy relative file to relative directory. But some special.
 
 1. vim
-  + git clone git@github.com:gmarik/vundle.git ~/.vim/bundle/vundle
-  + replace(move) the vimrc to ~/.vimrc
+   + git clone git@github.com:gmarik/vundle.git ~/.vim/bundle/vundle
+   + replace(move) the vimrc to ~/.vimrc
 2. emacs(what I used is spacemacs)
-  + git clone git@github.com:syl20bnr/spacemacs.git ~/.emacs.d
-  + cd ~/.emacs.d/ && git checkout --track origin/develop
-  + move the spacemacs/ to ~/.spacemacs.d(but notice there should not have a ~/.spacemacs)
+   + git clone git@github.com:syl20bnr/spacemacs.git ~/.emacs.d
+   + cd ~/.emacs.d/ && git checkout --track origin/develop
+   + move the spacemacs/ to ~/.spacemacs.d(but notice there should not have a ~/.spacemacs)
 3. zsh
-  + git clone git@github.com:robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-  + cp zshrc ~/.zshrc
-
+   + git clone git@github.com:robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+   + cp zshrc ~/.zshrc
+   notice: I used agnoster on my computer, so I write down how to set it.
+   1) downloads the PowerlineSymbols
+      get under fonts dir or [[http://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf][online]]
+   2) copy the fonts and refresh the font cache
+      cp PowerlineSymbols.otf ~/.fonts
+      fc-cache -vf ~/.fonts
+   3) [[https://simplyian.com/2014/03/28/using-powerline-symbols-with-your-current-font/][reference]]
 * Context
 1. vim
  + vimrc :: (~/.vimrc)

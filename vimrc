@@ -1,11 +1,6 @@
 "--------------------------------------------------
-" Author                                          |
-" reference: www.ruchee.com                       |
-"--------------------------------------------------
-
-
-"--------------------------------------------------
-" end author                                      |
+" Author: tyuownu                                 |
+" Email: tyuownu@gmail.com                        |
 "--------------------------------------------------
 
 "--------------------------------------------------
@@ -28,6 +23,8 @@ Bundle 'Yggdroot/indentLine'
 let g:indentLine_char = '┊'
 
 Bundle 'godlygeek/tabular'
+
+" Markdown-relative
 Bundle 'plasticboy/vim-markdown'
 au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=mkd
 
@@ -39,21 +36,11 @@ Bundle 'vim-scripts/ZenCoding.vim'
 Bundle 'vim-scripts/xml.vim'
 Bundle 'vim-scripts/molokai'
 Bundle 'altercation/vim-colors-solarized'
-" 这个插件snipMate是个好东西.快速补齐．
-" 比如for循环只要输入for<tab>
-" 可定制的文件在snippets文件夹下面
-"    Bundle 'vim-scripts/snipMate'
-" 貌似和supertab插件有冲突？
 
-"   Bundle 'vim-scripts/a.vim'
-" python自动不全的插件
-"    Bundle 'davidhalter/jedi-vim'
-"    Bundle 'vim-scripts/TxtBrowser'
 " 后面再来研究这个powerline   airline
 Bundle 'Lokaltog/vim-powerline'
 let g:Powerline_symbols='unicode'
 
-"   "Bundle 'vim-scripts/cmake.vim-syntax'
 " Bundle 'Valloric/YouCompleteMe'
 " 安装过程(vim >= 7.3.584  clang >= 3.2)
 " 1. 下载clang+llvm     llvm.org/releases/download.html
@@ -62,11 +49,12 @@ let g:Powerline_symbols='unicode'
 "    cd ~ycm_build
 " 4. cmake -G "Unix Makefiles" -DEXTERNAL_LIBCLANG_PATH=~/clang+llvm-path/ . ~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp
 " 5. make ycm_support_libs
-let g:ycm_seed_indentifiers_with_syntax=1
-let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
-let g:ycm_confirm_extra_conf=0
-let g:ycm_collect_indentifiers_from_tag_files=1
-set completeopt=longest,menu
+" YCM-relative
+"let g:ycm_seed_indentifiers_with_syntax=1
+"let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
+"let g:ycm_confirm_extra_conf=0
+"let g:ycm_collect_indentifiers_from_tag_files=1
+"set completeopt=longest,menu
 
 Bundle 'Valloric/ListToggle'
 Bundle 'scrooloose/syntastic'
@@ -140,7 +128,7 @@ set nowrap                      " 设置不自动换行
 set foldmethod=syntax           " 设置代码折叠类型
 set foldlevel=100               " 禁止自动折叠
 set laststatus=2                " 开启状态栏信息
-" set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}   "状态行显示的内容  
+"set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}   "状态行显示的内容  
 
 set history=1000
 " to be continue
@@ -173,11 +161,11 @@ set wildmenu                    " 自动补全命令时候使用菜单式匹配�
 :imap <F4> <ESC>la
 
 function ClosePair(char)
-    if getline('.')[col('.')-1] == a:char
-        return "\<Right>"
-    else
-        return a:char
-    endif
+  if getline('.')[col('.')-1] == a:char
+    return "\<Right>"
+  else
+    return a:char
+  endif
 endf
 
 " MiniBufExplorer               多个文件切换,可以使用鼠标双击
@@ -189,52 +177,46 @@ let g:miniBufExplorerMoreThanOne=0
 
 let g:winManagerWindowLayout='FileExplorer|TagList'
 let g:winManagerWidth=30                   " 设置Winmanager宽度，默认25
-nmap wm :WMToggle<cr>
 
 " 新建.c, .cpp, .sh文件自动插入文件头
 autocmd BufNewFile *.cpp,*.[ch],*.sh,*.py exec ":call SetTitle()"
 " SetTitle函数
 function SetTitle()
-    if &filetype == 'sh'
-        call setline(1,"\#!/bin/bash")
-        call append(line("."),"")
-    elseif &filetype == 'python'
-        call setline(1,"#!/usr/bin/env python")
-        call append(line("."),"# coding=utf-8")
-        call append(line(".")+1, "")
-        call append(line(".")+2, "#-----------------------------------------")
-        call append(line(".")+3, "#   >File Name: ".expand("%"))
-        call append(line(".")+4, "#   > Main: tyuownu@gmail.com")
-        call append(line(".")+5, "#-----------------------------------------")
-        call append(line(".")+6, "")
-    else
-        call setline(1, "/*************************************************************************") 
-        call append(line("."), "    > File Name: ".expand("%")) 
-        call append(line(".")+1, "    > Author: tyu") 
-        call append(line(".")+2, "    > Mail: tyuownu@gmail.com") 
-        call append(line(".")+3, "    > Created Time: ".strftime("%d/%m/%Y - %H:%M:%S")) 
-        call append(line(".")+4, " ************************************************************************/") 
-        call append(line(".")+5, "")
-    endif
-    if expand("%:e") == 'cpp'
-        call append(line(".")+6, "#include <iostream>")
-        call append(line(".")+7, "using namespace std;")
-        call append(line(".")+8, "")
-    endif
-    if &filetype == 'c'
-        call append(line(".")+6, "#include<stdio.h>")
-        call append(line(".")+7, "")
-    endif
-    if expand("%:e") == 'h'
-        call append(line(".")+6, "#ifndef _".toupper(expand("%:r"))."_H")
-        call append(line(".")+7, "#define _".toupper(expand("%:r"))."_H")
-        call append(line(".")+8, "#endif")
-    endif
-    if &filetype == 'java'
-        call append(line(".")+6,"public class ".expand("%:r"))
-        call append(line(".")+7,"")
-    endif
-    "新建文件后，自动定位到文件末尾
+  if &filetype == 'sh'
+    call setline(1,"\#!/bin/bash")
+    call append(line("."),"")
+  elseif &filetype == 'python'
+    call setline(1,"#!/usr/bin/env python")
+    call append(line("."),"# coding=utf-8")
+    call append(line(".")+1, "")
+    call append(line(".")+2, "#-----------------------------------------")
+    call append(line(".")+3, "#   >File Name: ".expand("%"))
+    call append(line(".")+4, "#   > Main: tyuownu@gmail.com")
+    call append(line(".")+5, "#-----------------------------------------")
+    call append(line(".")+6, "")
+  else
+    call setline(1, "/*************************************************************************") 
+    call append(line("."), "    > File Name: ".expand("%")) 
+    call append(line(".")+1, "    > Author: tyu") 
+    call append(line(".")+2, "    > Mail: tyuownu@gmail.com") 
+    call append(line(".")+3, "    > Created Time: ".strftime("%d/%m/%Y - %H:%M:%S")) 
+    call append(line(".")+4, " ************************************************************************/") 
+    call append(line(".")+5, "")
+  endif
+  if expand("%:e") == 'cpp'
+    call append(line(".")+6, "#include <iostream>")
+    call append(line(".")+7, "using namespace std;")
+    call append(line(".")+8, "")
+  endif
+  if &filetype == 'c'
+    call append(line(".")+6, "#include<stdio.h>")
+    call append(line(".")+7, "")
+  endif
+  if expand("%:e") == 'h'
+    call append(line(".")+6, "#ifndef _".toupper(expand("%:r"))."_H")
+    call append(line(".")+7, "#define _".toupper(expand("%:r"))."_H")
+    call append(line(".")+8, "#endif")
+  endif
 endfunc 
 
 " 新建完后自动定位到文件末尾
@@ -242,30 +224,26 @@ autocmd BufNewFile * normal G
 
 
 "代码格式优化化
-
 map <F6> :call FormartSrc()<CR><CR>
 
 "定义FormartSrc()
 func FormartSrc()
-    exec "w"
-    if &filetype == 'c'
-        exec "!astyle --style=ansi -a --suffix=none %"
-    elseif &filetype == 'cpp' || &filetype == 'hpp'
-        exec "r !astyle --style=ansi --one-line=keep-statements -a --suffix=none %> /dev/null 2>&1"
-    elseif &filetype == 'py'||&filetype == 'python'
-        exec "r !autopep8 -i --aggressive %"
-    elseif &filetype == 'xml'
-        exec "!astyle --style=gnu --suffix=none %"
-    else
-        exec "normal gg=G"
-        return
-    endif
-    exec "e! %"
+  exec "w"
+  if &filetype == 'c'
+    exec "!astyle --style=ansi -a --suffix=none %"
+  elseif &filetype == 'cpp' || &filetype == 'hpp'
+    exec "r !astyle --style=ansi --one-line=keep-statements -a --suffix=none %> /dev/null 2>&1"
+  elseif &filetype == 'py'||&filetype == 'python'
+    exec "r !autopep8 -i --aggressive %"
+  elseif &filetype == 'xml'
+    exec "!astyle --style=gnu --suffix=none %"
+  else
+    exec "normal gg=G"
+    return
+  endif
+  exec "e! %"
 endfunc
 "结束定义FormartSrc
-
-
-
 "-----------------------------------------------------
 " end basic                                          |
 "-----------------------------------------------------
@@ -274,22 +252,22 @@ endfunc
 " gui font and color scheme                          |
 "-----------------------------------------------------
 if has("gui_gtk2")
-    set guifont=DejaVu\ Sans\ Mono\ 12
+  set guifont=DejaVu\ Sans\ Mono\ 12
 elseif has("gui_macvim")
-    set guifont=DejaVu_Sans_Mono:h10
+  set guifont=DejaVu_Sans_Mono:h10
 elseif has("gui_win32")
-    set guifont=DejaVu_Sans_Mono:h10
+  set guifont=DejaVu_Sans_Mono:h10
 endif
 
 if has('gui_running')
-    set t_Co=256
-    let g:solarized_termcolors=256
-    colorscheme solarized
-    set background=dark
+  set t_Co=256
+  let g:solarized_termcolors=256
+  colorscheme solarized
+  set background=dark
 else
-    set background=dark
-    colorscheme solarized  " molokai主要这两种,其他慢慢添加
-"    colorscheme molokai
+  set background=dark
+  colorscheme solarized  " molokai主要这两种,其他慢慢添加
+  "    colorscheme molokai
 endif
 
 " 设置gui窗口显示
@@ -297,12 +275,12 @@ set guioptions-=m
 set guioptions-=T
 " <F2> to show or hide the bar
 map <silent> <F2> :if &guioptions =~# 'T'<Bar>
-            \set guioptions-=T <Bar>
-            \set guioptions-=m <Bar>
-            \else <Bar>
-            \set guioptions+=T <Bar>
-            \set guioptions+=m <Bar>
-            \endif<CR>
+      \set guioptions-=T <Bar>
+      \set guioptions-=m <Bar>
+      \else <Bar>
+      \set guioptions+=T <Bar>
+      \set guioptions+=m <Bar>
+      \endif<CR>
 "-----------------------------------------------------
 " end gui font and color scheme                      |
 "-----------------------------------------------------
@@ -329,6 +307,14 @@ map tl :Tlist<CR><c-l>
 let NERDTreeAutoCenter=1                      " 自动调节焦点
 let NERDTreeQuitOnOpen=1
 let NERDTreeWinSize=25
+let NERDTreeIgnore=['\.pyc']
+" 列出当前目录文件
+map <F3> :NERDTreeToggle<CR>
+imap <F3> <ESC> :NERDTreeToggle<CR>
+" 当打开vim且没有文件时自动打开NERDTree
+autocmd vimenter * if !argc() | NERDTree | endif
+" 只剩NERDTree时自动关闭
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 "-----------------------------------------------------
 " end TList                                          |
 "-----------------------------------------------------
@@ -348,22 +334,18 @@ imap <c-k> <ESC>l
 inoremap <c-l> <ESC>:wqa<CR>      
 
 map ]] :tnext<CR>
+" bash ~/.profile
 map BA :!bash ~/.profile<CR><CR>
 " 将tab替换为空格
 nmap tt :%s/\t/    /g<CR>
 " Ctrl+c 复制
 vmap <C-c> "+y
 
-" 列出当前目录文件
-map <F3> :NERDTreeToggle<CR>
-imap <F3> <ESC> :NERDTreeToggle<CR>
-" 当打开vim且没有文件时自动打开NERDTree
-autocmd vimenter * if !argc() | NERDTree | endif
-" 只剩NERDTree时自动关闭
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 map vv %%l
 imap vv <ESC>%%a
+
+map hex :%!xxd<CR>
 
 
 "-----------------------------------------------------
@@ -377,7 +359,6 @@ imap vv <ESC>%%a
 set tags+=tags;
 map <C-F12> :!ctags -R -I --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
-let NERDTreeIgnore=['\.pyc']
 "-----------------------------------------------------
 " end ctags & Taglist                                |
 "-----------------------------------------------------

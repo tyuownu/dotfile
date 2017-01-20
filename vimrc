@@ -20,7 +20,7 @@ Bundle 'gmarik/vundle'
 " original repos on github
 Bundle 'tpope/vim-fugitive'
 Bundle 'Yggdroot/indentLine'
-let g:indentLine_char = '┊'
+"let g:indentLine_char = '┊'
 
 Bundle 'godlygeek/tabular'
 
@@ -96,12 +96,12 @@ Bundle 'omnicppcomplete'
 "-----------------------------------------------------
 " filetype plugin indent on "required 启用自动补全
 set nrformats=                  " Vim设置成十进制
-set tabstop=2                   " Tab宽度
-set expandtab                   " or set et. 和空格之间联系．
+set tabstop=4                   " Tab宽度
+"set expandtab                   " or set et. 和空格之间联系．
 set shiftwidth=2                " 程序中自动缩进所使用的空白长度
 set number                      " 显示行号
 set autoindent                  " 自动缩进．自动对齐.就是当按O时，或按照上面的缩进去缩进
-set cindent shiftwidth=2        " C语言语法.
+set cindent shiftwidth=4        " C语言语法.
 set showmatch                   " 显示括号配对情况
 set mouse=a                     " 启用鼠标
 set mousemodel=popup            " 当右键单击窗口的时候，弹出快捷菜单.
@@ -112,7 +112,7 @@ set ignorecase                  " 忽略大小写
 set nowrapscan                  " 搜索到文件两端时不重新搜索
 set vb t_vb=                    " 关闭提示音
 set cursorline                  " 突出显示当前行
-set cuc                         " 高亮当前列
+"set cuc                         " 高亮当前列
 set so=2                        " 光标在窗口上下边界时距离边界3行即开始滚屏
 
 set list
@@ -264,9 +264,9 @@ if has('gui_running')
   let g:solarized_termcolors=256
   colorscheme solarized
   set background=dark
-else
-  set background=dark
-  colorscheme solarized  " molokai主要这两种,其他慢慢添加
+"else
+  "set background=dark
+  "colorscheme solarized  " molokai主要这两种,其他慢慢添加
   "    colorscheme molokai
 endif
 
@@ -337,7 +337,7 @@ map ]] :tnext<CR>
 " bash ~/.profile
 map BA :!bash ~/.profile<CR><CR>
 " 将tab替换为空格
-nmap tt :%s/\t/    /g<CR>
+" nmap tt :%s/\t/    /g<CR>
 " Ctrl+c 复制
 vmap <C-c> "+y
 

@@ -46,20 +46,16 @@ values."
      (c-c++ :variables
             c-c++-default-mode-for-headers 'c++-mode)
      python
-     yaml
-     erc
-     ibuffer
-     colors
-     chrome
-     finance
-     gtags
-     eyebrowse   ;; like i3wm
-     emacs-lisp
-     octave
-     sql
-     (chinese :variables chinese-default-input-method 'pinyin
-              chinese-enable-fcitx t
-              chinese-enable-youdao-dict t)
+;;     yaml
+;;     erc
+;;     ibuffer
+;;     colors
+;;     chrome
+;;     finance
+     ;;gtags
+;;     eyebrowse   ;; like i3wm
+;;     octave
+;;     sql
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -126,12 +122,11 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(spacemacs-dark
-                         spacemacs-light
-                         solarized-light
+;                         spacemacs-light
+;                         solarized-light
                          solarized-dark
-                         leuven
-                         monokai
-                         zenburn)
+;                         zenburn
+						)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
@@ -291,62 +286,62 @@ layers configuration. You are free to put any user code."
   ;;  org part
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ; reference: http://doc.norang.ca/org-mode.html#HowToUseThisDocument
-  (global-set-key (kbd "C-c l") 'org-store-link)
+;;;  (global-set-key (kbd "C-c l") 'org-store-link)
   ;(global-set-key (kbd "C-c a") 'org-agenda)
-  (global-set-key (kbd "<f12>") 'org-agenda)
-  (global-set-key (kbd "C-c b") 'org-iswitchb)
+;;;  (global-set-key (kbd "<f12>") 'org-agenda)
+;;;  (global-set-key (kbd "C-c b") 'org-iswitchb)
   ;(global-set-key (kbd "C-c c") 'org-capture)
-  (global-set-key (kbd "<f11>") 'org-capture)
+;;;  (global-set-key (kbd "<f11>") 'org-capture)
 
 
-  (setq org-todo-keywords
-  '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d@/!)" "POINT(P@/!)")
-    (sequence "SOMEDAY(s)" "PAUSE(p@/!)" "|" "ABORT(a@/!)")
-    (sequence "BUG(b)" "WRITING(w)" "|" "FIXED(f@/!)"))
-  )
+;;;  (setq org-todo-keywords
+;;;  '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d@/!)" "POINT(P@/!)")
+;;;    (sequence "SOMEDAY(s)" "PAUSE(p@/!)" "|" "ABORT(a@/!)")
+;;;    (sequence "BUG(b)" "WRITING(w)" "|" "FIXED(f@/!)"))
+;;;  )
   ; tags
   ; Important & emergency          First
   ; Unimportant & emergency        Second
   ; Important & Unemergency        Thrid
   ; Unimportant & Unemergency      fOurth
-  (setq org-tag-alist '((:startgroup . nil)
-                        ("Important" . ?i)
-                        ("Unimportant" . ?I)
-                        (:endgroup . nil)
-                        (:startgroup . nil)
-                        ("Emergency" . ?e)
-                        ("Unemergency" . ?E)
-                        (:endgroup . nil)))
+;;;  (setq org-tag-alist '((:startgroup . nil)
+;;;                        ("Important" . ?i)
+;;;                        ("Unimportant" . ?I)
+;;;                        (:endgroup . nil)
+;;;                        (:startgroup . nil)
+;;;                        ("Emergency" . ?e)
+;;;                        ("Unemergency" . ?E)
+;;;                        (:endgroup . nil)))
 
   ; when all sub-project finished, the parent-project is DONE.
-  (defun org-summary-todo (n-done n-not-done)
-  "Swith entry to DONE when all subentries are done, to TODO otherwise"
-  (let (org-log-done org-log-states)  ;turn off logging
-    (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
+;;;  (defun org-summary-todo (n-done n-not-done)
+;;;  "Swith entry to DONE when all subentries are done, to TODO otherwise"
+;;;  (let (org-log-done org-log-states)  ;turn off logging
+;;;    (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
 
-  (setq org-agenda-files (quote ("~/notebook/lie/work"
-                                "~/notebook/lie/habit"
-                                "~/notebook/lie/others")))
+;;;  (setq org-agenda-files (quote ("~/notebook/lie/work"
+;;;                                "~/notebook/lie/habit"
+;;;                                "~/notebook/lie/others")))
 
-  (setq org-default-note-file "~/notebook/lie/work/inbox.org")
-  (setq org-capture-templates
-  (quote (("t" "todo" entry (file+headline "~/notebook/lie/work/task.org" "Task")
-            "** TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
-          ("d" "day" entry (file+headline "~/notebook/lie/work/task.org" "Days")
-            "** TODO Adding day %?\n%U\n%a\n" )
-          ("i" "ideas" entry (file+headline "~/notebook/lie/work/task.org" "Ideas")
-            "** TODO Ideas: %?\n%U\n%a\n" )
-          ("P" "Phone Call" entry (file+headline "~/notebook/lie/work/task.org" "Phones")
-            "** TODO PHONE CALL to %?\n%U\n%a\n :PHONE:\n%U" :clock-in t :clock-resume t)
-          ("w" "wanted" entry (file+headline "~/notebook/lie/work/inbox.org" "General")
-            "** TODO Wanted: %?\n%U\n%a\n")
-          ("e" "earn" entry (file+headline "~/notebook/lie/work/inbox.org" "General")
-            "** TODO Adding to Earn: %?\n%U\n%a\n")
-          ("p" "password" entry (file+headline "~/notebook/lie/work/inbox.org" "Passwords")
-            "** TODO Adding to One-password: \nACCOUNT: %?\n%U\n%a\n" :clock-in t :clock-resume t )
-          ("f" "financial" entry (file+headline "~/notebook/lie/work/inbox.org" "Financial")
-            "** TODO Financial, name: %?\n        money: %U\n%a\n" :clock-in t :clock-resume t )
-          )))
+;;;  (setq org-default-note-file "~/notebook/lie/work/inbox.org")
+;;;  (setq org-capture-templates
+;;;  (quote (("t" "todo" entry (file+headline "~/notebook/lie/work/task.org" "Task")
+;;;            "** TODO %?\n%U\n%a\n" :clock-in t :clock-resume t)
+;;;          ("d" "day" entry (file+headline "~/notebook/lie/work/task.org" "Days")
+;;;            "** TODO Adding day %?\n%U\n%a\n" )
+;;;          ("i" "ideas" entry (file+headline "~/notebook/lie/work/task.org" "Ideas")
+;;;            "** TODO Ideas: %?\n%U\n%a\n" )
+;;;          ("P" "Phone Call" entry (file+headline "~/notebook/lie/work/task.org" "Phones")
+;;;            "** TODO PHONE CALL to %?\n%U\n%a\n :PHONE:\n%U" :clock-in t :clock-resume t)
+;;;          ("w" "wanted" entry (file+headline "~/notebook/lie/work/inbox.org" "General")
+;;;            "** TODO Wanted: %?\n%U\n%a\n")
+;;;          ("e" "earn" entry (file+headline "~/notebook/lie/work/inbox.org" "General")
+;;;            "** TODO Adding to Earn: %?\n%U\n%a\n")
+;;;          ("p" "password" entry (file+headline "~/notebook/lie/work/inbox.org" "Passwords")
+;;;            "** TODO Adding to One-password: \nACCOUNT: %?\n%U\n%a\n" :clock-in t :clock-resume t )
+;;;          ("f" "financial" entry (file+headline "~/notebook/lie/work/inbox.org" "Financial")
+;;;            "** TODO Financial, name: %?\n        money: %U\n%a\n" :clock-in t :clock-resume t )
+;;;          )))
 
   ;; %?  cursor location
   ;; %U  timestamp
@@ -354,35 +349,35 @@ layers configuration. You are free to put any user code."
 
 
   ; Fast todo selection
-  (setq org-use-fast-todo-selection t)
-  (setq org-treat-S-cursor-todo-selection-as-state-change nil)
+;;;  (setq org-use-fast-todo-selection t)
+;;;  (setq org-treat-S-cursor-todo-selection-as-state-change nil)
 
   ;; refile
-  (setq org-refile-targets (quote ((nil :maxlevel . 9)
-                                  (org-agenda-files :maxlevel . 9))))
-  '(org-refile-targets (quote (("inbox.org" :maxlevel . 1)
-                              ("wanted.org" :level . 2))))
-  '(org-refile-targets (quote (("inbox.org" :maxlevel . 1)
-                              ("earn.org" :level . 2))))
-  '(org-refile-targets (quote (("inbox.org" :maxlevel . 1)
-                              ("financial.org" :level . 2))))
-  '(org-refile-targets (quote (("task.org" :maxlevel . 1)
-                              ("finished.org" :level . 2))))
-  '(org-refile-targets (quote (("task.org" :maxlevel . 1)
-                              ("finished.org" :level . 2))))
-  '(org-refile-targets (quote (("task.org" :maxlevel . 1)
-                              ("trash.org" :level . 2))))
-  '(org-refile-targets (quote (("inbox.org" :maxlevel . 1)
-                              ("trash.org" :level . 2))))
-  (setq org-src-fontify-natively t)
-  (add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
+;;;  (setq org-refile-targets (quote ((nil :maxlevel . 9)
+;;;                                  (org-agenda-files :maxlevel . 9))))
+;;;  '(org-refile-targets (quote (("inbox.org" :maxlevel . 1)
+;;;                              ("wanted.org" :level . 2))))
+;;;  '(org-refile-targets (quote (("inbox.org" :maxlevel . 1)
+;;;                              ("earn.org" :level . 2))))
+;;;  '(org-refile-targets (quote (("inbox.org" :maxlevel . 1)
+;;;                              ("financial.org" :level . 2))))
+;;;  '(org-refile-targets (quote (("task.org" :maxlevel . 1)
+;;;                              ("finished.org" :level . 2))))
+;;;  '(org-refile-targets (quote (("task.org" :maxlevel . 1)
+;;;                              ("finished.org" :level . 2))))
+;;;  '(org-refile-targets (quote (("task.org" :maxlevel . 1)
+;;;                              ("trash.org" :level . 2))))
+;;;  '(org-refile-targets (quote (("inbox.org" :maxlevel . 1)
+;;;                              ("trash.org" :level . 2))))
+;;;  (setq org-src-fontify-natively t)
+;;;  (add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
   ;;  end org part
   ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
   (global-set-key (kbd "C-SPC") 'toggle-input-method)
   (setq c-default-style "linux"
-        c-basic-offset 2)
+        c-basic-offset 4)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -406,3 +401,24 @@ layers configuration. You are free to put any user code."
 
 (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
 (load custom-file 'no-error 'no-message)
+(defun dotspacemacs/emacs-custom-settings ()
+  "Emacs custom settings.
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(blink-cursor-mode nil)
+ '(column-number-mode t)
+ '(menu-bar-mode nil)
+ '(tool-bar-mode nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:family "DejaVu Sans Mono" :foundry "unknown" :slant normal :weight normal :height 98 :width normal)))))
+)

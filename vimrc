@@ -367,7 +367,7 @@ map <C-F12> :!ctags -R -I --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 "-----------------------------------------------------
 " for ROS                                            |
 "-----------------------------------------------------
-au BufRead,BufNewFile *.{launch} set filetype=xml
+au BufRead,BufNewFile *.{launch, urdf, xacro} set filetype=xml
 
 "-----------------------------------------------------
 " end for ROS                                        |

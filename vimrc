@@ -368,7 +368,25 @@ map <C-F12> :!ctags -R -I --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 " for ROS                                            |
 "-----------------------------------------------------
 au BufRead,BufNewFile *.{launch, urdf, xacro} set filetype=xml
+au BufRead,BufNewFile *.{cfg} set filetype=python
 
 "-----------------------------------------------------
 " end for ROS                                        |
+"-----------------------------------------------------
+
+"-----------------------------------------------------
+"remember last update or view postion"               |
+"-----------------------------------------------------
+ " Only do this part when compiled with support for autocommands 
+ if has("autocmd")
+ " In text files, always limit the width of text to 78 characters 
+ autocmd BufRead *.txt set tw=78
+ " When editing a file, always jump to the last cursor position 
+ autocmd BufReadPost *
+ \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+ \ exe "normal g'\"" |
+ \ endif 
+ endif
+"-----------------------------------------------------
+" end ctags & Taglist                                |
 "-----------------------------------------------------

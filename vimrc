@@ -27,6 +27,19 @@ Bundle 'godlygeek/tabular'
 " Markdown-relative
 Bundle 'plasticboy/vim-markdown'
 au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=mkd
+au BufRead,BufNewFile *.{launch,config,sdf,world} set filetype=xml
+au BufRead,BufNewFile *.{cfg} set filetype=python
+" 设置每行超过80字符提示
+" C/C++
+au BufRead,BufNewFile *.{h,c,cc,cpp} 2match Underlined /.\%81v/
+" shell python matlab
+au BufRead,BufNewFile *.{sh,py,m} 2match Underlined /.\%81v/
+" vim emacs
+au BufRead,BufNewFile *.{vim,vimrc} 2match Underlined /.\%81v/
+" xml relative
+au BufRead,BufNewFile *.{launch,config,world,urdf} 2match Underlined /.\%81v/
+" markdown & others
+au BufRead,BufNewFile *.{md,rmd,org,markdown,txt} 2match Underlined /.\%81v/
 
 Bundle 'vim-scripts/Auto-Pairs'
 Bundle 'scrooloose/nerdtree'
@@ -364,15 +377,6 @@ map <C-F12> :!ctags -R -I --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 "-----------------------------------------------------
 
 
-"-----------------------------------------------------
-" for ROS                                            |
-"-----------------------------------------------------
-au BufRead,BufNewFile *.{launch, urdf, xacro} set filetype=xml
-au BufRead,BufNewFile *.{cfg} set filetype=python
-
-"-----------------------------------------------------
-" end for ROS                                        |
-"-----------------------------------------------------
 
 "-----------------------------------------------------
 "remember last update or view postion"               |

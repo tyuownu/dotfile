@@ -73,6 +73,7 @@ Bundle 'Valloric/ListToggle'
 Bundle 'scrooloose/syntastic'
 Bundle 'vim-scripts/bufexplorer.zip'
 Bundle 'vim-scripts/minibufexplorerpp'
+Bundle 'vim-scripts/DoxygenToolkit.vim'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-surround'
 Bundle 'terryma/vim-expand-region'
@@ -109,8 +110,8 @@ Bundle 'omnicppcomplete'
 "-----------------------------------------------------
 " filetype plugin indent on "required 启用自动补全
 set nrformats=                  " Vim设置成十进制
-set tabstop=4                   " Tab宽度
-"set expandtab                   " or set et. 和空格之间联系．
+set tabstop=2                   " Tab宽度
+set expandtab                   " or set et. 和空格之间联系．
 set shiftwidth=2                " 程序中自动缩进所使用的空白长度
 set number                      " 显示行号
 set autoindent                  " 自动缩进．自动对齐.就是当按O时，或按照上面的缩进去缩进
@@ -393,4 +394,16 @@ map <C-F12> :!ctags -R -I --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
  endif
 "-----------------------------------------------------
 " end ctags & Taglist                                |
+"-----------------------------------------------------
+
+
+"-----------------------------------------------------
+" Doxygen                                            |
+"-----------------------------------------------------
+let g:DoxygenToolkit_blockHeader="-------------------------------------------"
+let g:DoxygenToolkit_blockFooter="-------------------------------------------"
+let g:DoxygenToolkit_authorName="tyuownu(tyuownu@gmail.com)"
+
+"-----------------------------------------------------
+" end Doxygen                                        |
 "-----------------------------------------------------

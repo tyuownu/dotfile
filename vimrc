@@ -29,6 +29,7 @@ Bundle 'plasticboy/vim-markdown'
 au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=mkd
 au BufRead,BufNewFile *.{launch,config,sdf,world} set filetype=xml
 au BufRead,BufNewFile *.{cfg} set filetype=python
+au BufRead,BufNewFile *.{rmd, Rmd, rmarkdown} set filetype=tex
 " 设置每行超过80字符提示
 " C/C++
 au BufRead,BufNewFile *.{h,c,cc,cpp} 2match Underlined /.\%81v/
@@ -115,7 +116,7 @@ set expandtab                   " or set et. 和空格之间联系．
 set shiftwidth=2                " 程序中自动缩进所使用的空白长度
 set number                      " 显示行号
 set autoindent                  " 自动缩进．自动对齐.就是当按O时，或按照上面的缩进去缩进
-set cindent shiftwidth=4        " C语言语法.
+set cindent shiftwidth=2        " C语言语法.
 set showmatch                   " 显示括号配对情况
 set mouse=a                     " 启用鼠标
 set mousemodel=popup            " 当右键单击窗口的时候，弹出快捷菜单.

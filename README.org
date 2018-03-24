@@ -6,6 +6,7 @@ Copy relative file to relative directory. But some special.
 1. vim
    + git clone git@github.com:gmarik/vundle.git ~/.vim/bundle/vundle
    + replace(move) the vimrc to ~/.vimrc
+   + mkdir -p ~/.vim/indent && cp vim/google ~/.vim/indent/cpp.vim
 2. emacs(what I used is spacemacs)
    + git clone git@github.com:syl20bnr/spacemacs.git ~/.emacs.d
    + cd ~/.emacs.d/ && git checkout --track origin/develop

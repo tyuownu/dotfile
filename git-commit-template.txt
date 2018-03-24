@@ -2,9 +2,7 @@
 
 # <body>
 
-[   changes ]
 [ reference ]
-[  computer ]
 # <footer>
 
 # Type should be one of the following:

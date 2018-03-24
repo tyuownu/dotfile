@@ -29,7 +29,7 @@ Bundle 'plasticboy/vim-markdown'
 au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=mkd
 au BufRead,BufNewFile *.{launch,config,sdf,world} set filetype=xml
 au BufRead,BufNewFile *.{cfg} set filetype=python
-au BufRead,BufNewFile *.{rmd, Rmd, rmarkdown} set filetype=tex
+au BufRead,BufNewFile *.{rmd,Rmd,rmarkdown} set filetype=tex
 " 设置每行超过80字符提示
 " C/C++
 au BufRead,BufNewFile *.{h,c,cc,cpp} 2match Underlined /.\%81v/

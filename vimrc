@@ -408,3 +408,7 @@ let g:DoxygenToolkit_authorName="tyuownu(tyuownu@gmail.com)"
 "-----------------------------------------------------
 " end Doxygen                                        |
 "-----------------------------------------------------
+
+" highlight the end of line whitespace
+highlight WhitespaceEOL ctermbg=red guibg=red
+match WhitespaceEOL /\s\+$/

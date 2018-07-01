@@ -412,3 +412,6 @@ let g:DoxygenToolkit_authorName="tyuownu(tyuownu@gmail.com)"
 " highlight the end of line whitespace
 highlight WhitespaceEOL ctermbg=red guibg=red
 match WhitespaceEOL /\s\+$/
+
+let g:syntastic_cpp_cpplint_exec="cplint"
+let g:syntastic_cpp_checkers=['cpplint']

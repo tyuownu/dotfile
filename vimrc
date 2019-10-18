@@ -415,3 +415,4 @@ match WhitespaceEOL /\s\+$/
 
 let g:syntastic_cpp_cpplint_exec="cplint"
 let g:syntastic_cpp_checkers=['cpplint']
+Plugin 'zxqfl/tabnine-vim'

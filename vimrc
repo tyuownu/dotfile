@@ -80,6 +80,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'terryma/vim-expand-region'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'terryma/vim-multiple-cursors'
+Bundle 'mattn/emmet-vim'
 
 
 
@@ -416,3 +417,5 @@ match WhitespaceEOL /\s\+$/
 " let g:syntastic_cpp_cpplint_exec="cplint"
 " let g:syntastic_cpp_checkers=['cpplint']
 " Plugin 'zxqfl/tabnine-vim'
+
+let g:user_emmet_leader_key=','

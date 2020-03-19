@@ -94,7 +94,7 @@ Bundle 'L9'
 Bundle 'supertab'
 let g:SuperTabRetainCompletionType=2
 
-Bundle 'omnicppcomplete'
+" Bundle 'omnicppcomplete'
 ""let g:SuperTabDefaultCompletionType="<C-x><C-u>"
 "   vundle 命令
 " :BundleList   
@@ -413,6 +413,6 @@ let g:DoxygenToolkit_authorName="tyuownu(tyuownu@gmail.com)"
 highlight WhitespaceEOL ctermbg=red guibg=red
 match WhitespaceEOL /\s\+$/
 
-let g:syntastic_cpp_cpplint_exec="cplint"
-let g:syntastic_cpp_checkers=['cpplint']
-Plugin 'zxqfl/tabnine-vim'
+" let g:syntastic_cpp_cpplint_exec="cplint"
+" let g:syntastic_cpp_checkers=['cpplint']
+" Plugin 'zxqfl/tabnine-vim'
